@@ -1,0 +1,56 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #282c34;
+    padding: 10px;
+    color: white;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  aside {
+    width: 250px;
+    background: #f4f4f4;
+    padding: 15px;
+  }
+  
+  main {
+    padding: 15px;
+    flex: 1;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background: #282c34;
+    color: white;
+  }
+  
+  h2 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+  }
+  
+  button {
+    margin: 5px;
+  }
+  

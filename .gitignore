@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+coverage/
+
+# Production build
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+*.log
+*.pid
+*.pid.lock
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.swn
+
+# System files
+.DS_Store
+Thumbs.db
+*.iml
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Miscellaneous
+*.lock
+.eslintcache
+*.babelrc
+.cache/
+.parcel-cache/
+
+# Dependency directories
+/flow-typed/
+/jspm_packages/
+
+# Next.js/React-specific cache
+.next/
+out/
+
+# Storybook files
+.storybook/
+*.story.mdx
+
+# Prettier
+*.prettier-cache
+
+# npm/yarn logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Local project settings
+*.local

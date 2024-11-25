@@ -1,0 +1,80 @@
+/* src/index.css */
+
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для заголовка */
+  .header {
+    background-color: #007acc;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  /* Стили для боковой панели */
+  .sidebar {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar .search {
+    margin-bottom: 20px;
+  }
+  
+  /* Стили для основного контента */
+  .main-content {
+    margin: 20px;
+  }
+  
+  /* Стили для списка постов */
+  .blog-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .blog-list li {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Стили для пагинации */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #005999;
+  }
+  
+  /* Стили для подвала */
+  .footer {
+    background-color: #007acc;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
