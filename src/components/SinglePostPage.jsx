@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 const SinglePostPage = () => {
-    const { id } = useParams();  // Получение ID поста из URL
+    const { id } = useParams();  
 
     const fetchPost = async () => {
         const response = await axios.get(`/wp-json/wp/v2/posts/${id}`);

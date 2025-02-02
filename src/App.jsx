@@ -8,7 +8,7 @@ import Login from './components/single/Login';
 import Register from './components/single/Register';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Suspense } from 'react';
-import { UserProvider } from './components/UserContext'; // Импортируем контекст пользователя
+import { UserProvider } from './components/UserContext';
 import './scss/styles.scss';
 
 const queryClient = new QueryClient();

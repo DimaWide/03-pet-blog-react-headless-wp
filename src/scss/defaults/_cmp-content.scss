@@ -1,8 +1,6 @@
 .cmp-content {
 
-    
-
-    /* Сбрасываем отступы для первого и последнего дочернего элемента */
+    /* Reset the margins for the first and last child elements */
     >* {
         &:first-child {
             margin-top: 0 !important;
@@ -13,7 +11,7 @@
         }
     }
 
-    /* Изображения и подписи */
+    /* Images and captions */
     .wp-block-image {
         margin: 30px 0;
     }
@@ -24,22 +22,17 @@
         margin-top: 10px;
     }
 
-    /* Ссылки */
+    /* Links */
     a {
-        //color: #3c79ff;
         color: #3c79ff;
         text-decoration: none;
-        @include link_hover(0.7); // Пример использования миксина для эффекта наведения
+        @include link_hover(0.7); // Example of using a mixin for the hover effect
         font-size: 13px;
     }
 
-    /* Цитаты (blockquote) */
-    blockquote {}
-
-    // Blockquote
-
+    /* Blockquotes */
     blockquote {
-        border-left: 4px solid#3c79ff;
+        border-left: 4px solid #3c79ff;
         padding: 0px 14px;
         margin-top: 30px;
         margin-bottom: 30px;
@@ -71,8 +64,7 @@
         }
     }
 
-
-    /* Таблицы */
+    /* Tables */
     table {
         width: 100%;
         border-collapse: collapse;
@@ -99,7 +91,7 @@
         }
     }
 
-    /* Заголовки */
+    /* Headings */
     h1 {
         font-size: 28px;
     }
@@ -134,7 +126,7 @@
         margin-bottom: 15px;
     }
 
-    /* Текстовые параграфы */
+    /* Paragraphs */
     p {
         margin-bottom: 15px;
 
@@ -143,7 +135,7 @@
         }
     }
 
-    /* Списки (ul) */
+    /* Lists (ul) */
     ul {
         line-height: normal;
         padding-left: 0;
@@ -174,35 +166,8 @@
         }
     }
 
-    /* Адаптивность */
-    // @media (max-width: 1200px) {
-    //     h1 {
-    //         font-size: 40px;
-    //     }
-
-    //     h2 {
-    //         font-size: 32px;
-    //     }
-
-    //     h3 {
-    //         font-size: 28px;
-    //     }
-
-    //     h4 {
-    //         font-size: 24px;
-    //     }
-
-    //     h5 {
-    //         font-size: 20px;
-    //     }
-
-    //     h6 {
-    //         font-size: 18px;
-    //     }
-    // }
-
+    /* Responsiveness */
     @media (max-width: 767px) {
-
         h1,
         h2,
         h3,
@@ -211,22 +176,6 @@
         h6 {
             margin-top: 30px;
         }
-
-        // h1 {
-        //     font-size: 32px;
-        // }
-
-        // h2 {
-        //     font-size: 24px;
-        // }
-
-        // h3 {
-        //     font-size: 22px;
-        // }
-
-        // h4 {
-        //     font-size: 20px;
-        // }
 
         p {
             font-size: 14px;

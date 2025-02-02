@@ -3,64 +3,71 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Header = () => {
+    // State variables for mobile menu visibility, authentication status, and user info
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userInfo, setUserInfo] = useState(null); // Сохраняем данные пользователя
-    const navigate = useNavigate();
+    const [userInfo, setUserInfo] = useState(null); // Store user information (name and avatar)
+    const navigate = useNavigate(); // Hook for navigation after logout
 
-    // Проверка авторизации при монтировании компонента
+    // useEffect hook to check authentication status and fetch user data on component mount
     useEffect(() => {
-        const token = localStorage.getItem('authToken');
+        const token = localStorage.getItem('authToken'); // Retrieve the token from localStorage
         if (token) {
-            setIsAuthenticated(true);
+            setIsAuthenticated(true); // Set authentication status to true if token exists
 
-            // Получаем данные пользователя через API
+            // Make an API call to get user data if the token is available
             axios
                 .get('http://dev.wp-blog/wp-json/wp/v2/users/me', {
-                    headers: { Authorization: `Bearer ${token}` },
+                    headers: { Authorization: `Bearer ${token}` }, // Include the token in the authorization header
                 })
                 .then((response) => {
+                    // On successful response, store user data
                     setUserInfo({
-                        name: response.data.name, // Имя пользователя
-                        avatar: response.data.avatar_urls?.['96'], // Аватарка 96x96
+                        name: response.data.name, // Store user's name
+                        avatar: response.data.avatar_urls?.['96'], // Store user's avatar (96px size)
                     });
                 })
                 .catch((err) => {
+                    // If there is an error fetching user data, reset authentication state
                     console.error('Error fetching user data:', err);
                     setIsAuthenticated(false);
                 });
         } else {
-            setIsAuthenticated(false);
+            setIsAuthenticated(false); // Reset if no token is found
         }
-    }, []);
+    }, []); // Empty dependency array ensures this runs only on component mount
 
+    // Function to toggle the mobile menu's open/closed state
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
     };
 
+    // Handle the logout functionality
     const handleLogout = () => {
-        // Удаляем токены из localStorage
+        // Remove authentication tokens from localStorage
         localStorage.removeItem('authToken');
         localStorage.removeItem('refreshToken');
-        
+
+        // Reset the authentication state and user info
         setIsAuthenticated(false);
         setUserInfo(null);
 
-        // Перенаправление на главную страницу
+        // Redirect the user to the homepage after logging out
         navigate('/');
     };
 
     return (
         <header className="cmp-4-header bg-blue-600 text-white shadow-md">
             <div className="w-full max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-                {/* Логотип */}
+                {/* Logo section */}
                 <div className="text-2xl font-bold">
                     <Link to="/">WP Blog</Link>
                 </div>
 
-                {/* Навигация для больших экранов */}
+                {/* Navigation for larger screens */}
                 <nav className="data-menu hidden md:flex space-x-6 items-center">
                     <Link to="/" className="hover:text-blue-300">Home</Link>
+                    {/* Conditional rendering based on authentication status */}
                     {!isAuthenticated ? (
                         <>
                             <Link to="/login" className="hover:text-blue-300">Login</Link>
@@ -68,14 +75,15 @@ const Header = () => {
                         </>
                     ) : (
                         <div className="flex items-center space-x-4">
-                                       <button
+                            {/* Logout button */}
+                            <button
                                 onClick={handleLogout}
                                 className="data-logout hover:text-blue-300 text-sm"
                             >
                                 Logout
                             </button>
-                            
-                            {/* Аватар пользователя */}
+
+                            {/* User avatar */}
                             {userInfo?.avatar && (
                                 <img
                                     src={userInfo.avatar}
@@ -83,17 +91,16 @@ const Header = () => {
                                     className="w-10 h-10 rounded-full border-2 border-white"
                                 />
                             )}
-                            {/* Имя пользователя */}
+                            {/* Display user's name */}
                             <span className="text-white font-medium">{userInfo?.name}</span>
-                            {/* Кнопка выхода */}
-                 
                         </div>
                     )}
                 </nav>
 
-                {/* Кнопка для мобильного меню */}
+                {/* Mobile menu toggle button */}
                 <div className="data-menu-btn md:hidden">
                     <button onClick={toggleMobileMenu} className="text-white focus:outline-none">
+                        {/* Toggle between open/close icons */}
                         {isMobileMenuOpen ? (
                             <svg
                                 className="w-6 h-6"
@@ -129,7 +136,7 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Мобильное меню */}
+            {/* Mobile menu */}
             {isMobileMenuOpen && (
                 <nav className="data-menu-btn mod-mobile md:hidden bg-blue-700 py-4">
                     <ul className="flex flex-col space-y-2 items-center">
@@ -138,6 +145,7 @@ const Header = () => {
                                 Home
                             </Link>
                         </li>
+                        {/* Conditional rendering for login/register/logout */}
                         {!isAuthenticated ? (
                             <>
                                 <li>
@@ -153,7 +161,7 @@ const Header = () => {
                             </>
                         ) : (
                             <li className="text-center">
-                                {/* Аватар и имя в мобильном меню */}
+                                {/* Display user avatar and name in mobile menu */}
                                 {userInfo?.avatar && (
                                     <img
                                         src={userInfo.avatar}
@@ -162,6 +170,7 @@ const Header = () => {
                                     />
                                 )}
                                 <span className="text-white font-medium">{userInfo?.name}</span>
+                                {/* Logout button */}
                                 <button
                                     onClick={handleLogout}
                                     className="hover:text-blue-300 text-sm mt-2"

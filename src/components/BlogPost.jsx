@@ -1,72 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import moment from 'moment'; // Moment.js to format dates
+import axios from 'axios'; // Axios for HTTP requests (not used in this component, but might be needed)
+import { Link } from 'react-router-dom'; // Link component for navigation
 
 const BlogPost = ({ post }) => {
-    const [authorName, setAuthorName] = useState('Неизвестный автор');
-    const postDate = post.date ? moment(post.date).format('LL') : 'Дата не указана';
+    // State to store author name, default is 'Unknown author'
+    const [authorName, setAuthorName] = useState('Unknown author');
 
-    console.log(post)
+    // Format the post date using Moment.js
+    const postDate = post.date ? moment(post.date).format('LL') : 'No date specified';
 
-    const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['image-size-2']?.source_url
+    // Get the URL for the featured image (if available)
+    const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['image-size-2']?.source_url;
 
+    // Get the categories for the post, if available, default to 'Без категории' (uncategorized)
     const categories = post._embedded?.['wp:term']?.[0]?.map(term => term.name) || ['Без категории'];
 
-
-
-    // Ограничиваем краткое описание до 30 слов
+    // Get the excerpt (short description) of the post, limiting to the first 30 words
     const excerpt = post.excerpt?.rendered
         ? post.excerpt.rendered.split(' ').slice(0, 30).join(' ') + (post.excerpt.rendered.split(' ').length > 30 ? '...' : '')
-        : 'Нет краткого описания';
-
-    // useEffect(() => {
-    //     // Функция для получения медиа
-    //     const fetchFeaturedMedia = async () => {
-    //         const mediaId = post.featured_media;
-    //         if (mediaId) {
-    //             try {
-    //                 const response = await axios.get(`http://dev.wp-blog/wp-json/wp/v2/media/${mediaId}`);
-    //                 setFeaturedMedia(response.data.source_url);
-    //             } catch (error) {
-    //                 console.error('Ошибка при получении изображения:', error);
-    //             }
-    //         }
-    //     };
-
-    //     // // Функция для получения имени автора
-    //     // const fetchAuthorName = async () => {
-    //     //     const authorId = post.author;
-    //     //     if (authorId) {
-    //     //         try {
-    //     //             const response = await axios.get(`http://dev.wp-blog/wp-json/wp/v2/users/${authorId}`);
-    //     //             setAuthorName(response.data.name);
-    //     //         } catch (error) {
-    //     //             console.error('Ошибка при получении автора:', error);
-    //     //         }
-    //     //     }
-    //     // };
-
-    //     // Функция для получения категорий
-    //     const fetchCategories = async () => {
-    //         const categoryIds = post.categories || [];
-    //         try {
-    //             const categoryPromises = categoryIds.map((id) =>
-    //                 axios.get(`http://dev.wp-blog/wp-json/wp/v2/categories/${id}`)
-    //             );
-    //             const categoryResponses = await Promise.all(categoryPromises);
-    //             setCategories(categoryResponses.map((res) => res.data.name));
-    //         } catch (error) {
-    //             console.error('Ошибка при получении категорий:', error);
-    //         }
-    //     };
-
-    //     // fetchFeaturedMedia();
-    //     // fetchCategories();
-    // }, [post]);
+        : 'No short description';
 
     return (
+        // Link to the full post page
         <Link to={`/post/${post.id}`} className="cmp-3-post block bg-white shadow-md rounded-lg overflow-hidden mb-5">
+            {/* Display the featured image if available */}
             {featuredMedia ? (
                 <img
                     alt={post.title.rendered}
@@ -74,19 +32,27 @@ const BlogPost = ({ post }) => {
                     className="w-full h-48 object-cover"
                 />
             ) : (
+                // Show a placeholder if there's no image
                 <div className="h-48 bg-gray-200 flex items-center justify-center">
-                    <span className="text-gray-500">Изображение отсутствует</span>
+                    <span className="text-gray-500">No image available</span>
                 </div>
             )}
+
             <div className="p-5">
+                {/* Title of the post */}
                 <h2 className="data-title text-xl font-bold mb-2">{post.title.rendered}</h2>
+
+                {/* Date the post was published */}
                 <p className="data-meta text-gray-600 text-sm mb-4">
-                    Опубликовано {postDate} 
+                    Published {postDate}
                 </p>
+
+                {/* Display categories of the post */}
                 <p className="data-meta text-gray-600 text-sm mb-4">
-                    Категории: {categories.length > 0 ? categories.join(', ') : 'Без категории'}
+                    Categories: {categories.length > 0 ? categories.join(', ') : 'Uncategorized'}
                 </p>
-                {/* Отображаем краткое описание */}
+
+                {/* Display excerpt (short description) of the post */}
                 <div
                     className="data-desc prose mb-4"
                     dangerouslySetInnerHTML={{ __html: excerpt }}
