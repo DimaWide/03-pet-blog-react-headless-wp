@@ -22,15 +22,181 @@
 //        opacity: $hover-opacity;
 //     }
 //  }
+
+.sidebar {
+    width: 300px;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+.cmp-loader {
+    height: calc(100vh - 170px);
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f6f6f6;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1296px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .data-loader {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #d4d4d4;
+        /* Светлая часть */
+        border-top: 4px solid #007bff;
+        /* Цветная часть */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.MuiContainer-root {
+    a {
+        color: #3c79ff;
+        font-weight: 600;
+    }
+}
+
+.cmp-single-post {
+    margin: 0 auto;
+
+    .data-img {
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        aspect-ratio: 1 / 0.5;
+
+        >* {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin-bottom: 0;
+        }
+    }
+
+    .data-meta {
+        margin-bottom: 20px;
+    }
+
+    .data-cats {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .category-button {
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+
+    .comment-form {
+        textarea {
+            min-height: 100px;
+        }
+    }
+
+    .data-post-navigation {
+        column-gap: 20px;
+        font-weight: 500;
+
+        .data-btn-right {
+            svg {
+                margin-left: 10px;
+                margin-right: 0;
+            }
+        }
+    }
+
+    @media (max-width: 767px) {
+        .data-title {
+            font-size: 24px;
+            line-height: 1.4;
+        }
+
+        .category-button {
+            margin-bottom: 0;
+            font-size: 12px;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .data-post-navigation {
+            flex-direction: column;
+            row-gap: 15px;
+
+            a {
+                width: 100%;
+            }
+
+            >span {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+        .data-title {
+            font-size: 22px;
+        }
+    }
+}
+
 .cmp-7-sidebar {
+    width: 100%;
+
+    .data-cats-main {
+        font-weight: 600;
+    }
+
     ul {
         padding: 0;
 
         li {
             list-style: none;
-            font-weight: 500;
+            font-weight: 600;
+
+            &:first-child {
+                display: none;
+            }
         }
     }
+
+    @media (max-width: 1199px) {
+        ul {
+            li {
+                font-weight: 500;
+            }
+        }
+    }
+
+    @media (max-width: 767px) {
+        .data-title {
+            font-size: 20px;
+        }
+    }
+
 }
 
 .cmp-6-footer {
@@ -39,16 +205,29 @@
 
 .cmp-5-pagination {
     margin-top: 25px;
-}
 
+    button {
+        &:not(:disabled) {
+            background-color: #3c79ff;
+        }
+    }
+}
 
 .cmp-4-header {
     background-color: rgb(60 121 255);
-
     margin-bottom: 50px;
 
-    .data-menu{
+    .data-menu {
         font-weight: 500;
+    }
+
+    button {
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .data-logout {
+        margin-right: 20px;
     }
 
     ul {
@@ -65,18 +244,69 @@
         color: #fff;
     }
 
-    .md:hidden{
+    .md:hidden {
         line-height: 1;
         line-height: 1;
     }
 
-    .cmp4 {}
+    @media (max-width: 767px) {
+        margin-bottom: 30px;
+
+        .data-menu-btn {
+            ul {
+
+                li {
+                    &:first-child {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            &.mod-mobile {
+                padding: 40px 0;
+
+                button {
+                    display: block;
+                }
+            }
+        }
+    }
 }
 
 
 .cmp-3-post {
     display: block;
     overflow: unset;
+    border-radius: 10px;
+    overflow: hidden;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    .data-meta {
+        color: #666564;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .data-desc {
+        margin: 0;
+        color: #666564;
+        margin-top: 15px;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .data-title {
+            font-size: 18px;
+        }
+    }
 }
 
 
@@ -87,7 +317,7 @@
         &-row {
             display: flex;
             //flex-wrap: wrap;
-            row-gap: 20px;
+            row-gap: 40px;
             margin: 0 -15px;
         }
 
@@ -100,6 +330,40 @@
 
             &:nth-child(2) {
                 width: 100%;
+            }
+        }
+    }
+
+
+    @media (max-width: 1199px) {
+        .cmp2 {
+            &-row {
+                flex-wrap: wrap;
+                margin: 0;
+            }
+
+            &-col {
+                &:first-child {
+                    width: 100%;
+                    margin-right: 0;
+                }
+
+            }
+        }
+    }
+
+    @media (max-width: 991px) {
+        .cmp2 {
+            &-row {
+                flex-wrap: wrap;
+                margin: 0;
+            }
+
+            &-col {
+                &:first-child {
+                    width: 100%;
+                    margin-right: 0;
+                }
             }
         }
     }
@@ -117,13 +381,29 @@
         &-row {
             display: flex;
             flex-wrap: wrap;
-            row-gap: 20px;
+            row-gap: 30px;
             margin: 0 -15px;
         }
 
         &-col {
             width: 33.33%;
             padding: 0 15px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .cmp1 {
+            &-col {
+                width: 50%;
+            }
+        }
+    }
+
+    @media (max-width: 575px) {
+        .cmp1 {
+            &-col {
+                width: 100%;
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ body.overflow-hidden {
 .wcl-body-inner {
     // overflow-x: hidden;
     // overflow-y: hidden;
+    min-height: 101vh;
 }
 
 img,
@@ -78,8 +79,9 @@ a {
 .wcl-body-inner {
     position: relative;
     z-index: 1;
+    min-height: 101vh;
+
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
     justify-content: space-between
 }
@@ -217,7 +219,7 @@ ol {
 }
 
 @media (max-width: 270px) {
-    html{
+    html {
         min-width: 270px;
     }
 }

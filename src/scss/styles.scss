@@ -1,12 +1,15 @@
 
 
 // Defaults
+@import 'defaults/mixings';
 @import 'defaults/reset';
 @import 'defaults/general';
 
 // Main
 @import 'main';
 
+// Components
+@import 'defaults/cmp-content';
 
 
 

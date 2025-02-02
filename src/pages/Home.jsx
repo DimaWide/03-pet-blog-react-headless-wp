@@ -10,18 +10,23 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0); // State for total pages
+    const [loading, setLoading] = useState(true); // State for loading
 
     const handleCategoryChange = (categoryId) => {
         setSelectedCategory(categoryId);
-        setSearchTerm(''); // Reset search when selecting a category
+        //  setSearchTerm(''); // Reset search when selecting a category
         setPage(1); // Reset to the first page
     };
 
     const handleSearch = (term) => {
         setSearchTerm(term);
-        setSelectedCategory(null); // Reset category on search
+        //  setSelectedCategory(null); // Reset category on search
         setPage(1); // Reset to the first page
     };
+
+    if (loading) {
+       <div className='cmp-loader'> <div class="data-loader"></div></div>;
+    }
 
     return (
         <div className='cmp-2-home'>
@@ -39,8 +44,9 @@ const Home = () => {
                                 page={page}
                                 setPage={setPage}
                                 setTotalPages={setTotalPages} // Pass setTotalPages function to BlogList
+                                setLoading={setLoading} // Передаем функцию для управления загрузкой
                             />
-                     
+
                         </main>
                     </div>
                 </div>

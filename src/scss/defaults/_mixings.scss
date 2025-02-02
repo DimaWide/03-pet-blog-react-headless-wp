@@ -1,0 +1,47 @@
+/*
+Mixin for styling form-placeholders
+@example scss - Usage
+
+   .my-class {
+        background: black(0.15);
+        color: white(0.9);
+   }
+
+*/
+@mixin placeholder {
+   &::-webkit-input-placeholder {
+      @content
+   }
+
+   &::-moz-placeholder {
+      opacity: 1;
+      @content
+   }
+
+   &:-moz-placeholder {
+      @content
+   }
+
+   &:-ms-input-placeholder {
+      @content
+   }
+
+   &.placeholder {
+      @content
+   }
+}
+
+@mixin wcl-reset-list {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+
+@mixin link_hover($hover-opacity: 0.65) {
+   transition: all 0.2s ease;
+
+   &:hover {
+      opacity: $hover-opacity;
+   }
+}
