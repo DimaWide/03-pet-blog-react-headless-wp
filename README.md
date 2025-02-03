@@ -1,4 +1,4 @@
-## Blog WP
+## Blog WP - React
 
 A modern, responsive blog website built with React. It features user authentication, dynamic blog post display, category filtering, search functionality, and pagination.
 
