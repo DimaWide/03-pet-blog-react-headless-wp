@@ -3,9 +3,7 @@
 A modern, responsive blog website built with React. It features user authentication, dynamic blog post display, category filtering, search functionality, and pagination.
 
 Screenshots:    
-[Main](https://github.com/DimaWide/03-pet-blog-react-headless-wp/tree/main/src/img/main.png)   
-[Single](https://github.com/DimaWide/03-pet-blog-react-headless-wp/tree/main/src/img/single.png)    
-[Login](https://github.com/DimaWide/03-pet-blog-react-headless-wp/tree/main/src/img/login.png) | [Register](https://github.com/DimaWide/03-pet-blog-react-headless-wp/tree/main/src/img/register.png)      
+[Main](https://github.com/DimaWide/03-pet-blog-react-headless-wp/tree/main/src/img/main.png) | [Single](https://github.com/DimaWide/03-pet-blog-react-headless-wp/tree/main/src/img/single.png) | [Login](https://github.com/DimaWide/03-pet-blog-react-headless-wp/tree/main/src/img/login.png) | [Register](https://github.com/DimaWide/03-pet-blog-react-headless-wp/tree/main/src/img/register.png)      
 
 ![Blog WP](https://github.com/DimaWide/03-pet-blog-react-headless-wp/blob/main/src/img/ui.gif)
 
